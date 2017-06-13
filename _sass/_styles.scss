@@ -1,32 +1,19 @@
-// all custom styles for the site
+// general styles for the site
 
-
-body {
-  background-color: $se-light-grey;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('../img/bg/bg.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-}
 
 // ---------- Section styles ----------
 
 .invert-text { color: $white; }
-.bg {
-  &--white      { background-color: $white; }
-  &--black      { background-color: $black; }
-  &--light-grey { background-color: $light-grey; }
-  &--dark-grey  { background-color: $dark-grey; }
-  &--text-black     { background-color: $text-black; }
-  &--text-heading   { background-color: $text-heading; }
-  &--text-paragraph { background-color: $text-paragraph; }
-  &--se-orange     { background-color: $se-orange; }
-  &--se-light-grey { background-color: $se-light-grey; }
-  &--se-dark-grey  { background-color: $se-dark-grey; }
-  &--partner-primary   { background-color: $partner-primary; }
-  &--partner-secondary { background-color: $partner-secondary; }
+
+body.fashion-getaways,
+.bg--marble  {
+  background-image: url('../img/bg/marble.jpg');
+  background-position: top left;
+  background-repeat: repeat;
 }
+
+// remove duplicated background on home page
+.fashion-getaways #competition { background: 0; }
 
 
 // ---------- button ----------
@@ -34,17 +21,173 @@ body {
 .btn {
   @include transition;
   display:inline-block;
-  padding: .5em 1.5em;
-  border: 1px solid $se-orange;
-  font-weight: 500;
-  border-radius: 10em;
-  &:hover {
-    color: white;
-    background-color: $se-orange;
-    text-decoration: none;
+  padding: 1.4em 4em;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .25em;
+  &:hover { text-decoration: none; }
+  // * + & { margin-top: 1em; }
+  &--solid {
+    background-color: $km-yellow;
+    &:hover { background-color: lighten($km-yellow,12); }
   }
-  * + & { margin-top: 1em; }
+  &--hollow {
+    border: 2px solid $km-yellow;
+    &:hover { background-color: $km-yellow; }
+  }
+  &--small { font-size: .75em; }
+  // &--large { font-size: 1.2em; padding: .5em 3em; }
+  @include bp(large){
+    font-size: 13px;
+  }
+  &--inline { margin: 0; padding: 0 .5em; }
+  &--arrow {
+    $arrow-height: 17px;
+    position: relative;
+    padding-right: 1.75em;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 8px; // do need to adjust this with the size
+      display: block;
+      width: (($arrow-height/2)+1);
+      height: $arrow-height;
+      margin-top: -($arrow-height/2);
+      background-image: url(../img/icons/btn-arrow-white.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      .svg & { background-image: url(../img/icons/btn-arrow-white.svg); }
+    }
+  }
+}
 
-  &--solid { color: white; border: 0; background-color: $se-orange; }
-  &--large { font-size: 1.2em; padding: .5em 3em; }
+
+// ---------- article nav on homepage ----------
+
+.article {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  max-width: $medium;
+  margin-left: auto;
+  margin-right: auto;
+  color: $white;
+  text-align: center;
+  vertical-align: top;
+  @include bp(xlarge){
+    width: 33.33%;
+    max-width: 100%;
+    &:nth-child(2){ margin-top: 3%; }
+    &:nth-child(3){ margin-top: 6%; }
+  }
+  &:before {
+    // creates responsive ratio for height
+    content: "";
+    display: block;
+    width: 100%;
+    padding-top: 160%;
+  }
+  &__wrap {
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;
+    @include bp(medium){
+      margin-left: 2em;
+      margin-right: 2em;
+    }
+    @include bp(xlarge){
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content-overlay;
+  }
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    z-index: $z-content-upper;
+    padding-top: 66.66%;
+    .csstransforms.csstransforms3d & {
+      top: 50%;
+      padding-top: 0;
+      transform: translateY(-50%);
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content;
+    background-color: $black;
+    @include background-attributes;
+  }
+  font-size: .8em;
+  @include bp(medium){ font-size: .85em; }
+  @include bp(xlarge){ font-size: .75em; }
+  @include bp(xxlarge){ font-size: .85em; }
+  @include bp(xxxlarge){ font-size: 1.05em; }
+}
+
+
+// ---------- author badge on article and page intro ----------
+
+.author {
+  max-width: 17.333em;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.2em 1.467em;
+  color: white;
+  background-color: rgba($black,.5);
+  font-family: $title-font-family;
+  font-size: .85em;
+  line-height: 1.2;
+  text-align: center;
+  span { display: block; }
+  &__pre {
+    font-style: italic;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .175em;
+  }
+  &__name {
+    font-size: 1.8em;
+    font-weight: 600;
+  }
+  &__blog {
+    opacity: .66;
+    @include transition;
+    &:hover { opacity: 1; }
+  }
+}
+
+
+// ---------- competition iframe ----------
+
+.iframe {
+  height: $large;
+  max-width: $large;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  iframe {
+    display: block;
+    height: 100%;
+  }
 }

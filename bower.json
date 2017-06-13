@@ -1,5 +1,5 @@
 {
-  "name": "se-microsite-template",
+  "name": "fashion-getaways",
   "version": "0.0.0",
   "license": "MIT",
   "ignore": [
@@ -10,8 +10,8 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery": "1.11.1",
     "susy": "~2.2.6",
-    "reset-css": "^2.2.0"
+    "reset-css": "^2.2.0",
+    "jquery": "^3.2.1"
   }
 }

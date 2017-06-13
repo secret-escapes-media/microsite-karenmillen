@@ -1,0 +1,349 @@
+// elements that appear on the individual article pages
+
+
+// ---------- header content for article page ----------
+
+.header {
+  $header-height: 570px;
+  &__bgs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-background;
+    max-width: $xxxxlarge;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $z-background;
+    display: none;
+    width: 100%;
+    height: ($header-height / 1.05);
+    background-color: $text-paragraph;
+    @include background-attributes;
+    &:nth-of-type(2) { display: block; }
+    @include bp(large){
+      display: block;
+      width: 33.33%;
+      &:nth-of-type(1) { height: ($header-height * 1.05); }
+      &:nth-of-type(2) { height: ($header-height * 1.15); left: 33.33%; }
+      &:nth-of-type(3) { height: ($header-height * 1.25); left: 66.66%; }
+
+    }
+  }
+  &__back {
+    $size: 3.333em;
+    position: absolute;
+    left: 0;
+    top: ($size / 2);
+    z-index: $z-nav;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    border-radius: $size;
+    text-indent: -999999em;
+    background-color: rgba($black,.5);
+    background-image: url('../img/icons/arrow-left.png');
+    background-position: 45% center;
+    background-repeat: no-repeat;
+    background-size: auto ($size/2.75);
+    @include transition;
+    &:hover{ background-color: rgba($black,.75); }
+    .svg & { background-image: url('../img/icons/arrow-left.png'); }
+    .csstransforms.csstransforms3d & {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__title {
+    display: table;
+    width: 100%;
+    height: ($header-height / 1.5);
+    color: $white;
+    text-align: center;
+    > * {
+      display: table-cell;
+      vertical-align: middle;
+    }
+    @include bp(large) {
+      height: $header-height;
+    }
+  }
+  &__intro {
+    position: relative;
+    z-index: $z-content;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2.933em 1.75em 2em;
+    background-color: $white;
+    box-shadow: 0px 5px 89px 0px rgba(48, 24, 20, 0.15);
+    @include bp(large) {
+      padding-left: 2.933em;
+      padding-right: 2.933em;
+    }
+  }
+  &__author {
+    position: absolute;
+    top: -3em;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    margin-top: 0;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: $z-background;
+      background-color: $white;
+    }
+  }
+}
+
+
+// ---------- smaller article nav on article page ----------
+
+.article-small {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-top: 33.33%;
+  padding-bottom: 33.33%;
+  color: $white;
+  font-size: 1.1em;
+  text-align: center;
+  vertical-align: top;
+  @include bp(medium){
+    padding-top: 20%;
+    padding-bottom: 20%;
+  }
+  @include bp(large){
+    width: 50%;
+    max-width: 100%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    font-size: .66em;
+    &:nth-child(2){
+      transform: translateY(12.5%);
+    }
+  }
+  @include bp(xlarge){
+    font-size: .85em;
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content-overlay;
+  }
+  &__text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    z-index: $z-content-upper;
+    padding-top: 66.66%;
+    .csstransforms.csstransforms3d & {
+      top: 50%;
+      padding-top: 0;
+      transform: translateY(-50%);
+    }
+  }
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content;
+    background-color: $black;
+    @include background-attributes;
+    background-position: left 15%;
+  }
+}
+
+
+// ---------- uneven clusters of content images ----------
+
+// this is really ugly, definitley dont reuse
+// much easier to just use an bgimage & swap it out for responsive
+
+.cluster {
+  line-height: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.75em;
+  text-align: left;
+  @include bp(large){ text-align: center; }
+  @include bp(xlarge){
+    max-width: none;
+    margin-bottom: 0;
+    text-align: left;
+  }
+  &__wrap {
+    @include bp(xlarge){
+      display: flex;
+      align-items: flex-start;
+    }
+    @include bp(xxxlarge){
+      align-items: flex-end;
+    }
+  }
+  &--01 {
+    text-align: left;
+    .bg-image-ratio {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      &:nth-child(2) {
+        margin-top: 5%;
+        margin-left: -5%;
+      }
+    }
+  }
+  &--02 {
+    max-width: 680px;
+    .bg-image-ratio {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      &:nth-child(1) { width: 90%; }
+      &:nth-child(2) {
+        width: 40%;
+        margin-top: -4%;
+        margin-left: 4%;
+      }
+      &:nth-child(3) {
+        width: 40%;
+        margin-top: -8%;
+      }
+    }
+  }
+  &--03 {
+    position: relative;
+    padding-top: 49%;
+    max-width: none;
+    .bg-image-ratio {
+      position: absolute;
+      top: 0;
+      z-index: $z-content;
+      display: block;
+      &:nth-child(1) {
+        width: 60%;
+        left: 0;
+      }
+      &:nth-child(2) {
+        top: 6%;
+        right: 0;
+        width: 43%;
+      }
+      &:nth-child(3) {
+        top: 61.5%;
+        right: 18%;
+        width: 28%;
+      }
+    }
+    .cluster__text { margin-left: 0; }
+  }
+  &--04 {
+    text-align: center;
+    .bg-image-ratio {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      &:nth-child(1) { z-index: 3; }
+      &:nth-child(2) {
+        margin-top: 4%;
+        margin-left: -4%;
+        z-index: 2;
+      }
+      &:nth-child(3) { display: none; }
+      @include bp(xlarge){
+        &:nth-child(3) {
+          display: inline-block;
+          margin-top: -8%;
+          z-index: 1;
+        }
+      }
+    }
+  }
+  &--05 {
+    max-width: 500px;
+    text-align: left;
+    .bg-image-ratio {
+      display: inline-block;
+      width: 50%;
+      vertical-align: top;
+      &:nth-child(1) { z-index: 2; }
+      &:nth-child(2) {
+        z-index: 3;
+        margin-top: 5%;
+        margin-left: -5%;
+      }
+      &:nth-child(3) {
+        z-index: 0;
+        width: 80%;
+        margin-top: -5.5%;
+        margin-left: 5%;
+      }
+    }
+    @include bp(xlarge){
+      max-width: none;
+    }
+  }
+  &__text {
+    @include bp(xlarge){
+      margin-left: 0;
+      max-width: 50%;
+      margin-top: -2.5%;
+    }
+  }
+}
+
+
+// ---------- small even grid for outfit items in what to wear ----------
+
+.outfit {
+  $gutter: 3%;
+  margin-top: $gutter;
+  margin-left: -$gutter;
+  line-height: 0;
+  &__item {
+    position: relative;
+    display: inline-block;
+    width: (50% - $gutter);
+    margin-top: $gutter;
+    margin-left: $gutter;
+    background-color: $light-grey;
+    @include background-attributes;
+    &:before {
+      content: '';
+      display: block;
+      width: 100%;
+      padding-top: 100%;
+    }
+    @include bp(medium){
+      width: (33.33% - $gutter);
+    }
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: $z-content-upper;
+  }
+}

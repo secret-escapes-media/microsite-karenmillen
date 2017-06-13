@@ -6,7 +6,7 @@
 $white:       #fff;
 $black:       #000;
 $light-grey:  #eeeeee;
-$dark-grey:  #1a1a1a;
+$dark-grey:   #1a1a1a;
 
 $white-15:    rgba(255,255,255,.15);
 $white-25:    rgba(255,255,255,.25);
@@ -34,24 +34,29 @@ $se-dark-grey-5:  rgba(41,39,40,.5);
 $se-dark-grey-66: rgba(41,39,40,.66);
 $se-dark-grey-85: rgba(41,39,40,.85);
 
-$partner-primary:   #6dccea;
-$partner-secondary: #50679e;
+$km-yellow:   #fff16e;
 
-$text-black:      #0d0d0d;
-$text-heading:    #0d0d0d;
-$text-paragraph:  #5f5f5f;
+$text-black:      #47484a;
+$text-heading:    #47484a;
+$text-paragraph:  #47484a;
+$text-light:      #74787d;
+
 
 
 // -------- breakpoints --------
 
-$xxxlarge:  1120px;
+$xxxxlarge: 1500px;
+$xxxlarge:  1200px;
 $xxlarge:   970px;
 $xlarge:    850px;
 $large:     650px;
-$medium:    450px;
+$medium:    400px;
 $small:     300px;
 
 @mixin bp($width){
+  @if $width == xxxxlarge {
+    @media (min-width:$xxxxlarge) {@content;}
+  }
   @if $width == xxxlarge {
     @media (min-width:$xxxlarge) {@content;}
   }
@@ -160,6 +165,7 @@ $z-overlay-upper:   25;
 $z-overlay:         20;
 $z-nav-upper:       15;
 $z-nav:             10;
+$z-content-overlay: 9;
 $z-content-upper:   5;
 $z-content:         0;
 $z-background:      -1;
@@ -172,12 +178,24 @@ $z-background:      -1;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-color: $light-grey;
   &:before {
     display: block;
     content: "";
     width: 100%;
   }
+  &--mobile-half {
+    display: inline-block;
+    width: 50%;
+    @include bp(xlarge){
+      display: block;
+      width: 100%;
+    }
+  }
 }
+.bg-image-ratio--9-16:before  { padding-top: 177.777777778%; }
+.bg-image-ratio--3-4:before   { padding-top: 133.333333333%; }
+.bg-image-ratio--2-3:before   { padding-top: 150%; }
 .bg-image-ratio--1-1:before   { padding-top: 100%; }
 .bg-image-ratio--4-3:before   { padding-top: 75%; }
 .bg-image-ratio--3-2:before   { padding-top: 66.666666666667%; }

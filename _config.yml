@@ -1,10 +1,10 @@
 # Site settings
-title: se-microsite-template
+title: Fashion Getaways
 description: >
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi veniam voluptatibus totam accusantium laborum quo dolore.
-baseurl: "/se-microsite-template" # the subpath of your site, e.g. /blog/
+  We sent three of Europe’s best fashion bloggers to Barcelona, Mykonos and Cinque Terre to show us how to have the most stylish break this summer. Explore only the best things to do, the finest places to stay, and the best look for your break to ensure only the most fashionable getaways this summer...
+baseurl: "/fashiongetaways" # the subpath of your site, e.g. /blog/
 url: "http://mp.secretescapes.com" # the base hostname & protocol for your site
 
 # Build settings
 markdown: kramdown
-exclude: [node_modules, gulpfile.js, package.json, bower_components, bower.json, README.md]
+exclude: [node_modules, gulpfile.js, package.json, package-lock.json, bower_components, bower.json, README.md]

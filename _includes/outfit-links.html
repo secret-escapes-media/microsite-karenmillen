@@ -1,0 +1,9 @@
+<div class="row">
+  <ul class="outfit">
+    {% assign items = page.what-to-wear.items %}
+    {% for item in items%}<li class="outfit__item" style="background-image: url('{{site.baseurl}}/img/content/{{page.title | slugify}}/outfit/{{item.title | slugify}}.jpg');"><a id="track-shop-{{item.title | slugify}}" class="outfit__link" href="{{ item.link }}"></a></li>{% endfor %}
+  </ul>
+</div>
+<div class="row align-center">
+  <a id="track-cta-shop-look" href="http://www.karenmillen.com/gb/womens/edits/holiday/" class="btn btn--hollow btn--small">Shop the look</a>
+</div>

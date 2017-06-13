@@ -15,19 +15,76 @@ $margin: 2em;
 
 // -------- grid sections --------
 
-section {
-  padding-top: 2.25em;
-  padding-bottom: 2.25em;
+.section {
+  padding-top: 8em;
+  padding-bottom: 8em;
   @include bp(large) {
-    padding-top: 3.375em;
-    padding-bottom: 3.375em;
+    padding-top: 10em;
+    padding-bottom: 10em;
+  }
+  &--top { padding-bottom: 0; }
+}
+
+.content {
+  &:first-child { padding-top: 4em; }
+  & + & { padding-top: 4em; }
+  @include bp(xlarge) {
+    &:first-child { padding-top: 8em; }
+    & + & { padding-top: 8em; }
   }
 }
 
+.space {
+  &-top {
+    &--sm { margin-top: 1em; }
+    &--md { margin-top: 1.5em; }
+    &--lg { margin-top: 2em; }
+    &--xl { margin-top: 2.5em; }
+    &--xxl { margin-top: 3em; }
+    &--xxxl { margin-top: 4em; }
+  }
+  &-bottom {
+    &--sm { margin-bottom: 1em; }
+    &--md { margin-bottom: 1.5em; }
+    &--lg { margin-bottom: 2em; }
+    &--xl { margin-bottom: 2.5em; }
+    &--xxl { margin-bottom: 3em; }
+    &--xxxl { margin-bottom: 4em; }
+  }
+}
+
+.section {
+  &-top {
+    &--sm { margin-top: 3em; }
+    &--md { margin-top: 3.5em; }
+    &--lg { margin-top: 4em; }
+    &--xl { margin-top: 5.5em; }
+    &--xxl { margin-top: 6em; }
+    &--xxxl { margin-top: 8em; }
+  }
+  &-bottom {
+    &--sm { margin-bottom: 3em; }
+    &--md { margin-bottom: 3.5em; }
+    &--lg { margin-bottom: 4em; }
+    &--xl { margin-bottom: 5.5em; }
+    &--xxl { margin-bottom: 6em; }
+    &--xxxl { margin-bottom: 8em; }
+  }
+}
+
+
 .row {
-  @include container( $xxlarge );
+  @include container( $xxxlarge );
   position: relative;
+  &--no-gutter {
+    .row__column + .row__column { margin-top: 0; }
+  }
   & + .row { margin-top: $margin; }
+  &--xxxxl { @include container( $xxxxlarge ); }
+  &--xl { @include container( $xlarge ); }
+  &--lg { @include container( $large ); }
+  &--md { @include container( 550px ); }
+  &--sm { @include container( $small ); }
 }
 
 .row--padding {
@@ -47,9 +104,15 @@ section {
   }
 }
 
+.row__column--line-length {
+  max-width: ($large - 150);
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .row__column + .row__column {
   margin-top: ( $margin / 2 );
-  @include bp(large) {
+  @include bp(xlarge) {
     margin-top: 0;
   }
 }
@@ -79,7 +142,7 @@ section {
 // -------- grid columns --------
 
 // breakpoint for all columns
-@include bp(large){
+@include bp(xlarge){
 
   // two columns without gutter
   .row--columns-4-8 { @include two-column-grid( 4, 8 ); }

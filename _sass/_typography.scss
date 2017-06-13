@@ -5,7 +5,7 @@
 
 $core-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 $main-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-$title-font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+$title-font-family: 'futura-pt', 'Futura', 'Helvetica Neue', sans-serif;
 
 html { font-size:62.5%; }
 body,
@@ -23,8 +23,9 @@ input, textarea, keygen, select, button {
 
 .title {
   font-family: $title-font-family;
-  letter-spacing: .025em;
-  line-height: 1.15;
+  letter-spacing: .02em;
+  line-height: 1.1;
+  margin-bottom: .15em;
   + * { margin-top: .5em; }
 
   &--spacing {
@@ -33,15 +34,22 @@ input, textarea, keygen, select, button {
   &--extra-margin { margin-top: 1.5em; }
   &--sub-heading { margin-top: 0 !important; }
 
-  &--light     { font-weight: 200; }
-  &--bold      { font-weight: 500; }
-  &--bolder    { font-weight: 600; }
-  &--expanded  { letter-spacing: .2em; }
-  &--condense  { letter-spacing: 0; }
-  &--tight     { line-height: .9; }
-  &--tighter   { line-height: .8; }
-  &--upper     { text-transform: uppercase; }
-  &--italic    { font-style: italic; }
+  &--lig          { font-weight: 200; }
+  &--bold         { font-weight: 500; }
+  &--bolder       { font-weight: 600; }
+  &--expanded     { letter-spacing: .2em; }
+  &--expanded-lg  { letter-spacing: .4em; }
+  &--condense     { letter-spacing: 0; }
+  &--tight        { line-height: .9; }
+  &--tighter      { line-height: .8; }
+  &--upper        { text-transform: uppercase; }
+  &--italic       { font-style: italic; }
+
+  &--larger,
+  &--largest {
+    line-height: .85;
+  }
+  &--large { line-height: .9;}
 
   &--largest {
     font-size: 4.3em;
@@ -50,32 +58,73 @@ input, textarea, keygen, select, button {
       font-size: .55em;
     }
   }
-  &--larger      { font-size: 3.375em; }
+  // &--larger      { font-size: 3.375em; }
+  // &--large       { font-size: 2.986em; }
+  // &--medium      { font-size: 2.25em; }
+  // &--small       { font-size: 2em; }
+  // &--smaller     { font-size: 1.867em; }
+
+  &--giant       { font-size: 4em;}
+  &--largest     { font-size: 3.375em; }
+  &--larger      { font-size: 3.583em; }
   &--large       { font-size: 2.986em; }
-  &--medium      { font-size: 2.25em; }
-  &--small       { font-size: 2em; }
-  &--smaller     { font-size: 1.867em; }
+  &--medium      { font-size: 2.933em; }
+  &--small       { font-size: 2.467em; }
+  &--smaller     { font-size: 2.25em; }
   &--smallest    { font-size: 1.5em; }
-  &--tiny        { font-size: 1.44em; }
-  &--micro       { font-size: 1.2em; }
-  @include bp(xxlarge){
+
+  &--tiny        { font-size: 1.2em; }
+  &--micro       { font-size: 1.05em; }
+
+  @include bp(medium){
+    &--giant       { font-size: 4.3em;}
+  }
+
+  @include bp(large){
+    &--giant       { font-size: 8em;}
     &--largest     { font-size: 8em; }
     &--larger      { font-size: 6em; }
-    &--large       { font-size: 4em; }
-    &--medium      { font-size: 2.933em; }
-    &--small       { font-size: 2.467em; }
-    &--smaller     { font-size: 2.25em; }
+    &--large       { font-size: 4.4em; }
+    &--tiny        { font-size: 1.467em; }
+    &--micro       { font-size: 1.2em; }
+  }
+
+  @include bp(xxlarge){
+    &--giant { font-size: 10em;}
+  }
+
+  &--detail {
+    position: relative;
+    margin-left: .5em;
+    &:before {
+      $height: 5px;
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -100%;
+      display: block;
+      height: $height;
+      width: 100%;
+      margin-top: -($height/2);
+      margin-left: -12px;
+      background-color: #e9e3e2;
+    }
+    @include bp(xxxlarge){ margin-left: 0; }
   }
 }
 
-.paragraph {
+.p {
+  &--light { color: $text-light; }
   &--lead {
-    font-size: 1.25em;
-    line-height: 1.25;
+    font-size: 1.05em;
+    line-height: 1.66;
   }
   &--large { font-size: 1.05em; }
   @include bp(large){
-    &--lead { font-size: 1.467em; }
+    &--lead {
+      font-size: 1.2em;
+      line-height: 1.7;
+    }
     &--large { font-size: 1.2em; }
   }
 }

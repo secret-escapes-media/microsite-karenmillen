@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<div class="header__bgs">
+  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/01.jpg')"></div>
+  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/02.jpg')"></div>
+  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/03.jpg')"></div>
+</div>
+
+<div class="site-header__offset"></div>
+
+<div class="row">
+  <a class="header__back" href="{{ site.baseurl }}">back</a>
+</div>
+
+<section class="header">
+  <div class="row row--padding">
+    <div class="header__title">
+      <h1 class="title title--giant title--bolder">{{ page.title }}</h1>
+    </div>
+    <div class="header__intro">
+      <p class="author header__author" style="background-color: {{page.color}};"><span class="author__pre">Reviewed by</span> <span class="author__name">{{page.author}}</span> <a id="track-author-blog" href="{{page.blog-link}}" class="author__blog" target="_blank">{{page.blog}}</a></p>
+      <p class="p--lead p--light">{{ page.intro }}</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="content row row--padding">
+    <h2 class="title title--large title--bold title--detail">Places to go</h2>
+    {{ page.places-to-go | liquify }}
+  </div>
+  <div class="content row row--padding">
+    <h2 class="title title--large title--bold title--detail">Where to stay</h2>
+    {{ page.where-to-stay | liquify }}
+  </div>
+  <div class="content row row--padding">
+    <h2 class="title title--large title--bold title--detail">What to wear</h2>
+    {{ page.what-to-wear.content | liquify }}
+  </div>
+</section>
+
+<section class="section section--top row row--xxxxl">
+  {% assign articles = site.pages | where: "layout", "article" | sort: "nav-order" %}{% for article in articles %}{% if article.title != page.title %}{% include article-nav-small.html %}{% endif %}{% endfor %}
+</section>
+
+{% include competition.html %}
