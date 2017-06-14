@@ -71,15 +71,21 @@ body.fashion-getaways,
   display: inline-block;
   position: relative;
   width: 100%;
-  max-width: $medium;
+  max-width: $small;
   margin-left: auto;
   margin-right: auto;
   color: $white;
+  background-color: $black;
   text-align: center;
   vertical-align: top;
+  @include bp(large){
+    width: 50%;
+    max-width: 100%;
+    &:nth-child(2){ margin-top: 4%; }
+    &:nth-child(3){ margin-top: -6%; }
+  }
   @include bp(xlarge){
     width: 33.33%;
-    max-width: 100%;
     &:nth-child(2){ margin-top: 3%; }
     &:nth-child(3){ margin-top: 6%; }
   }
@@ -90,6 +96,7 @@ body.fashion-getaways,
     width: 100%;
     padding-top: 160%;
   }
+
   &__wrap {
     text-align: center;
     margin-left: 1em;
@@ -132,9 +139,10 @@ body.fashion-getaways,
     right: 0;
     bottom: 0;
     z-index: $z-content;
-    background-color: $black;
     @include background-attributes;
+    @include transition;
   }
+  &:hover &__bg { opacity: .66; }
   font-size: .8em;
   @include bp(medium){ font-size: .85em; }
   @include bp(xlarge){ font-size: .75em; }
@@ -146,7 +154,8 @@ body.fashion-getaways,
 // ---------- author badge on article and page intro ----------
 
 .author {
-  max-width: 17.333em;
+  display: block;
+  max-width: 18.488em;
   margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -189,5 +198,25 @@ body.fashion-getaways,
   iframe {
     display: block;
     height: 100%;
+  }
+}
+
+
+.img-block {
+  max-width: $xlarge;
+  margin-left: auto;
+  margin-right: auto;
+  @include clearfix();
+  &__img {
+    float: left;
+    width: 50%;
+    &--lg { width: 100% }
+  }
+  @include bp(medium){
+    &__img {
+      float: left;
+      width: 33.33%;
+      &--lg { width: 66.66% }
+    }
   }
 }

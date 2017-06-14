@@ -66,7 +66,7 @@ $site-header-height: ($core-nav-height + $site-nav-height);
       &--right {
         right: 0;
         display: block;
-        padding-top: 1em;
+        padding-top: 1.75em;
         .csstransforms.csstransforms3d & {
           top: 50%;
           right: 0;
@@ -311,7 +311,7 @@ $mobile-nav-width: 75%;
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 1em;
+    padding: 1.5em 1em;
     background: $se-dark-grey-85;
     text-align: center;
     line-height: 1;

@@ -18,7 +18,7 @@ $margin: 2em;
 .section {
   padding-top: 8em;
   padding-bottom: 8em;
-  @include bp(large) {
+  @include bp(xxlarge) {
     padding-top: 10em;
     padding-bottom: 10em;
   }
@@ -88,16 +88,16 @@ $margin: 2em;
 }
 
 .row--padding {
-  padding-left: ( $margin / 2 );
-  padding-right: ( $margin / 2 );
+  padding-left: ( $margin / 1.5 );
+  padding-right: ( $margin / 1.5 );
   @include bp(medium) {
     padding-left: $margin;
     padding-right: $margin;
   }
 }
 .row--margin {
-  margin-left: ( $margin / 2 );
-  margin-right: ( $margin / 2 );
+  margin-left: ( $margin / 1.5 );
+  margin-right: ( $margin / 1.5 );
   @include bp(medium) {
     margin-left: $margin;
     margin-right: $margin;

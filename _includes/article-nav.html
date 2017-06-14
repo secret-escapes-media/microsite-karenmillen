@@ -1,9 +1,9 @@
 <div class="article">
   <a class="article__link" href="{{site.baseurl}}/{{article.title | slugify}}"></a>
-  <div class="article__bg" style="background-image: url('{{site.baseurl}}/img/content/home/nav-{{article.title | slugify}}.jpg"></div>
+  <div class="article__bg" style="background-image: url('{{site.baseurl}}/img/content/home/nav-{{article.title | slugify}}.jpg');"></div>
   <div class="article__text row--padding">
     <h3 class="title title--large title--bolder">{{article.title}}</h3>
-    <p class="author" style="background-color: {{article.color}};">
+    <p class="author" style="background-color: {{article.color-trans}};">
       <span class="author__pre">Reviewed by</span><span class="author__name">{{article.author}}</span>
     </p>
   </div>

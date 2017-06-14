@@ -1,11 +1,12 @@
 ---
 layout: default
 ---
-
-<div class="header__bgs">
-  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/01.jpg')"></div>
-  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/02.jpg')"></div>
-  <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/03.jpg')"></div>
+<div class="header__wrap">
+  <div class="header__bgs">
+    <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/01.jpg')"></div>
+    <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/02.jpg')"></div>
+    <div class="header__bg" style="background-image: url('{{ site.baseurl }}/img/content/{{ page.title | slugify }}/bg/03.jpg')"></div>
+  </div>
 </div>
 
 <div class="site-header__offset"></div>
@@ -20,7 +21,9 @@ layout: default
       <h1 class="title title--giant title--bolder">{{ page.title }}</h1>
     </div>
     <div class="header__intro">
-      <p class="author header__author" style="background-color: {{page.color}};"><span class="author__pre">Reviewed by</span> <span class="author__name">{{page.author}}</span> <a id="track-author-blog" href="{{page.blog-link}}" class="author__blog" target="_blank">{{page.blog}}</a></p>
+      <div class="header__author-wrap">
+        <p class="author header__author" style="background-color: {{page.color}};"><span class="author__pre">Reviewed by</span> <span class="author__name">{{page.author}}</span> <a id="track-author-blog" href="{{page.blog-link}}" class="author__blog" target="_blank">{{page.blog}}</a></p>
+      </div>
       <p class="p--lead p--light">{{ page.intro }}</p>
     </div>
   </div>

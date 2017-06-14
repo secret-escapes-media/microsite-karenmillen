@@ -5,6 +5,12 @@
 
 .header {
   $header-height: 570px;
+  &__wrap {
+    position: relative;
+    max-width: $xxxxlarge;
+    margin-left: auto;
+    margin-right: auto;
+  }
   &__bgs {
     position: absolute;
     top: 0;
@@ -39,12 +45,13 @@
   &__back {
     $size: 3.333em;
     position: absolute;
-    left: 0;
+    left: 50%;
     top: ($size / 2);
     z-index: $z-nav;
     display: inline-block;
     width: $size;
     height: $size;
+    margin-left: -($size / 2);
     border-radius: $size;
     text-indent: -999999em;
     background-color: rgba($black,.5);
@@ -55,10 +62,6 @@
     @include transition;
     &:hover{ background-color: rgba($black,.75); }
     .svg & { background-image: url('../img/icons/arrow-left.png'); }
-    .csstransforms.csstransforms3d & {
-      left: 50%;
-      transform: translateX(-50%);
-    }
   }
   &__title {
     display: table;
@@ -80,7 +83,7 @@
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    padding: 2.933em 1.75em 2em;
+    padding: 4em 1.75em 2em;
     background-color: $white;
     box-shadow: 0px 5px 89px 0px rgba(48, 24, 20, 0.15);
     @include bp(large) {
@@ -89,21 +92,13 @@
     }
   }
   &__author {
-    position: absolute;
-    top: -3em;
-    left: 0;
-    right: 0;
-    bottom: auto;
     margin-top: 0;
-    &:before {
-      content: '';
+    &-wrap {
       position: absolute;
-      top: 0;
+      top: -3em;
       left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: $z-background;
-      background-color: $white;
+      width: 100%;
+      text-align: center;
     }
   }
 }
@@ -118,6 +113,7 @@
   padding-top: 33.33%;
   padding-bottom: 33.33%;
   color: $white;
+  background-color: $black;
   font-size: 1.1em;
   text-align: center;
   vertical-align: top;
@@ -153,7 +149,7 @@
     right: 0;
     bottom: auto;
     z-index: $z-content-upper;
-    padding-top: 66.66%;
+    padding-top: 15%;
     .csstransforms.csstransforms3d & {
       top: 50%;
       padding-top: 0;
@@ -167,10 +163,11 @@
     right: 0;
     bottom: 0;
     z-index: $z-content;
-    background-color: $black;
     @include background-attributes;
     background-position: left 15%;
+    @include transition;
   }
+  &:hover &__bg { opacity: .66; }
 }
 
 
@@ -233,26 +230,46 @@
   }
   &--03 {
     position: relative;
-    padding-top: 49%;
+    padding-top: 100%;
     max-width: none;
+    @include bp(large){
+      padding-top: 49%;
+    }
     .bg-image-ratio {
       position: absolute;
       top: 0;
       z-index: $z-content;
       display: block;
       &:nth-child(1) {
-        width: 60%;
+        width: 100%;
         left: 0;
       }
       &:nth-child(2) {
-        top: 6%;
+        top: 63.5%;
         right: 0;
-        width: 43%;
+        width: 50%;
       }
       &:nth-child(3) {
-        top: 61.5%;
-        right: 18%;
-        width: 28%;
+        top: 66.5%;
+        left: 13.5%;
+        width: 40%;
+      }
+      @include bp(large){
+        &:nth-child(1) {
+          width: 60%;
+          left: 0;
+        }
+        &:nth-child(2) {
+          top: 6%;
+          right: 0;
+          width: 43%;
+        }
+        &:nth-child(3) {
+          top: 61.5%;
+          left: auto;
+          right: 18%;
+          width: 28%;
+        }
       }
     }
     .cluster__text { margin-left: 0; }
